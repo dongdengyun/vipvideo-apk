@@ -1,0 +1,7 @@
+kivy>=2.1.0
+kivy-deps.angle>=0.3.2
+kivy-deps.glew>=0.3.1
+kivy-deps.sdl2>=0.4.5
+pyjnius>=1.4.2
+beautifulsoup4>=4.11.1
+requests>=2.28.0

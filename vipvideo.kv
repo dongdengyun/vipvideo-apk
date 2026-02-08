@@ -1,0 +1,171 @@
+#:kivy 1.11.1
+
+<MainLayout>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+
+    Label:
+        text: 'VIP追剧神器'
+        font_size: 24
+        size_hint_y: None
+        height: 50
+        color: 0.2, 0.6, 1, 1
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 50
+        
+        Label:
+            text: '视频网址：'
+            size_hint_x: 0.3
+            font_size: 14
+        
+        TextInput:
+            id: url_input
+            multiline: False
+            size_hint_x: 0.6
+            font_size: 14
+        
+        Button:
+            text: '清空'
+            size_hint_x: 0.1
+            font_size: 12
+            on_press: root.clear_url()
+
+    GridLayout:
+        cols: 2
+        size_hint_y: None
+        height: 80
+        spacing: 5
+        
+        Button:
+            text: '爱奇艺'
+            font_size: 14
+            background_color: 0, 0.5, 1, 1
+            on_press: root.open_iqy()
+        
+        Button:
+            text: '腾讯视频'
+            font_size: 14
+            background_color: 0, 0.5, 1, 1
+            on_press: root.open_tx()
+        
+        Button:
+            text: '优酷视频'
+            font_size: 14
+            background_color: 0, 0.5, 1, 1
+            on_press: root.open_yq()
+        
+        Button:
+            text: '哔哩哔哩'
+            font_size: 14
+            background_color: 0, 0.5, 1, 1
+            on_press: root.open_bili()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 50
+        spacing: 5
+        
+        Label:
+            text: '画质：'
+            size_hint_x: 0.2
+            font_size: 14
+        
+        Spinner:
+            id: quality_spinner
+            text: '高清'
+            values: ['高清', '超清', '4K', '蓝光', '原画']
+            size_hint_x: 0.4
+            font_size: 14
+        
+        Label:
+            text: '模式：'
+            size_hint_x: 0.2
+            font_size: 14
+        
+        Spinner:
+            id: mode_spinner
+            text: '浏览器播放'
+            values: ['浏览器播放', '内置播放器']
+            size_hint_x: 0.4
+            font_size: 14
+
+    Button:
+        text: '播放VIP视频'
+        size_hint_y: None
+        height: 60
+        font_size: 18
+        background_color: 0.3, 0.8, 0.3, 1
+        on_press: root.play_video()
+
+    Button:
+        text: '历史记录'
+        size_hint_y: None
+        height: 50
+        font_size: 16
+        background_color: 0.8, 0.6, 0.2, 1
+        on_press: root.show_history()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: 50
+        spacing: 5
+        
+        Button:
+            text: '最小化'
+            font_size: 14
+            background_color: 0.6, 0.6, 0.6, 1
+            on_press: root.minimize_window()
+        
+        Button:
+            text: '退出'
+            font_size: 14
+            background_color: 0.8, 0.3, 0.3, 1
+            on_press: root.exit_app()
+
+    Label:
+        text: '提示：本案例仅供学习使用，不可作为他用'
+        color: 1, 0, 0, 1
+        size_hint_y: None
+        height: 30
+        font_size: 12
+
+<HistoryButton@Button>:
+    size_hint_y: None
+    height: 50
+    halign: 'left'
+    font_size: 14
+
+<HistoryPopup>:
+    title: '播放历史记录'
+    size_hint: 0.9, 0.8
+    
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            BoxLayout:
+                id: history_list
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+        
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 50
+            
+            Button:
+                text: '清空历史'
+                font_size: 14
+                on_press: root.clear_history()
+            
+            Button:
+                text: '关闭'
+                font_size: 14
+                on_press: root.dismiss()
